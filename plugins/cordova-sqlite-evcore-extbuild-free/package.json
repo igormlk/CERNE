@@ -1,0 +1,36 @@
+{
+  "name": "cordova-sqlite-evcore-extbuild-free",
+  "version": "0.9.0",
+  "description": "Cordova/PhoneGap sqlite storage - free enterprise version with Android performance/memory improvements and extra features for PhoneGap Build",
+  "cordova": {
+    "id": "cordova-sqlite-evcore-extbuild-free",
+    "platforms": [
+      "android",
+      "ios",
+      "windows"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free.git"
+  },
+  "keywords": [
+    "sqlite",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows"
+  ],
+  "author": "various",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues"
+  },
+  "homepage": "https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free",
+  "scripts": {
+    "start": "node scripts/prepareSpec.js"
+  },
+  "devDependencies": {
+    "shelljs": "^0.7.4"
+  }
+}

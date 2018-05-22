@@ -1,4 +1,4 @@
-$(function iniciarFlip($) {
+$(function iniciarFlip($)  {
   $(".flip").flip();
 });
 

@@ -123,15 +123,6 @@ function saveProfile(){
     openScreen('home');
 }
 
-
-function setProfileName(name){
-   $('#user-name').text(name);
-}
-
-function setProfileAvatar(avatar){
-    $('.user-avatar').css('background-image','url(img/'+avatar+'.jpeg),url(img/avatardefault.jpeg)')
-}
-
 function openScreen(screen){
     $('.body').addClass('hide');
     $('#screen-' + screen).removeClass('hide');
@@ -150,8 +141,28 @@ function updateUserDecksNumber(){
     return number;
 }
 
+/*Sets-----------------------------------------------------------------------------------------------------*/
 
+function setProfileName(name){
+    $('#user-name').text(name);
+}
 
+function setProfileTitle(title){
+    $('#user-role').text(title);
+}
+
+function setProfileDeckNumber(number){
+    var desc = '';
+
+    (number == 1) ? desc = " DECK" : desc = " DECKS";
+    (number < 10 && number > 0) ? number = "0" + number : number = number;
+
+    $('#user-deck-number').text(number + desc);
+}
+
+function setProfileAvatar(avatar){
+    $('.user-avatar').css('background-image','url(img/'+avatar+'.jpeg),url(img/avatardefault.jpeg)')
+}
 
 
 /*FIREBASE-----------------------------------------------------------------------------------------------------*/
@@ -172,4 +183,42 @@ function userPadrao(){
     usuario.preferencias = preferencias;
 
     writeFirebase('/users/'+usuario.id,usuario);
+}
+
+function deckPadrao(){
+    var deck = new Deck();
+    var card = new Card();
+
+    deck.id = 'D0101F';
+    deck.titulo = 'Membros da família em inglês';
+    deck.nota = 5;
+    deck.privacidade = false;
+    deck.categoria = 'Idioma';
+    deck.data = '22/05/2018';
+    deck.autor = 'thailon';
+
+    card.id = '001';
+    card.frente = 'Mom';
+    card.verso = 'Mamãe';
+
+    deck.addCard(card);
+
+    card = new Card();
+    card.id = '002';
+    card.frente = 'Dad';
+    card.verso = 'Papai';
+
+    deck.addCard(card);
+
+    writeFirebase('/decks/'+deck.id,deck);
+}
+
+function readUsuario(usuario){
+    var retorno = '';
+    readFirebase('/users/'+usuario, function(snapshot){
+        setProfileName(snapshot.val().nome);
+        setProfileTitle(snapshot.val().titulo);
+        setProfileDeckNumber(snapshot.val().deck.length);
+        setProfileAvatar(snapshot.val().avatar);
+    });
 }

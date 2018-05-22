@@ -1,6 +1,6 @@
 class Deck
     {
-        constructor(_id, _titulo, _nota, _privacidade, _categoria)
+        constructor(_id, _titulo, _nota, _privacidade, _categoria, _autor)
         {
             this.listaCards = [];
             this.id = _id;
@@ -9,10 +9,13 @@ class Deck
             this.privacidade = _privacidade;
             this.categoria = _categoria;
             this.data = new Date();
+            this.autor = _autor;
         }
 
         toJSON()
         {
+            let {listaCards, id, titulo, nota, privacidade,categoria, data,autor} = this;
+            return {listaCards, id, titulo, nota, privacidade,categoria, data,autor};
 
         }
 

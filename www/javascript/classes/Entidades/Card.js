@@ -1,12 +1,16 @@
 class Card
 {
 
-    constructor(id,frente,verso,imagem)
+    constructor(_id,_frente,_verso)
     {
-        this.id = id;
-        this.frente = frente;
-        this.verso = verso;
-        this.imagem = imagem;
+        this.id = _id;
+        this.frente = _frente;
+        this.verso = _verso;
+    }
+
+    toJSON()
+    {
+
     }
 
 }

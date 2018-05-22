@@ -1,20 +1,22 @@
 class Usuario
 {
 
-    constructor(_id, _usuario, _senha)
+    constructor()
     {
-        this.id = _id;
-        this.usuario = _usuario;
-        this.senha = _senha;
-        this.perfil = new Perfil();
-        this.estudo = [];
-        this.task = [];
+        this.nome = "";
+        this.titulo = "";
+        this.avatar = 0;
+        this.id = 0;
+        this.deck = [];
         this.preferencias = new Preferencias();
     }
 
 
-    testeUsuarioTask()
+    toJSON()
     {
+        let {nome, titulo, avatar, id, deck, preferencias} = this;
+        return {nome,titulo,avatar,id,deck,preferencias};
     }
+
 
 }

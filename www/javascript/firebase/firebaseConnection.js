@@ -54,9 +54,7 @@ function writeFirebase(path, value)
 
 function readFirebase(path, callback){
 
-    return database.ref(path).once('value').then(function(snapshot){
-        callback(snapshot.val());
-    });
+    return database.ref(path).once('value').then(callback);
 }
 
 

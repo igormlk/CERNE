@@ -1,4 +1,4 @@
-$(function iniciarFlip($)  {
+$(function iniciarFlip($) {
   $(".flip").flip();
 });
 
@@ -8,7 +8,7 @@ $(function ($){
 
 function startHome(){
     if(!updateUserDecksNumber()){
-        createHomeMessage('deckid-cry.png','Você ainda não possui cards!');
+        createHomeMessage('deckid-cry.png','Você ainda não possui decks!');
     }
 
     $('#user-name-tb').val($('#user-name').text());
@@ -110,12 +110,27 @@ function saveNewDeck(){
 
 function saveProfile(){
     var name = $('#user-name-tb').val();
+    var avatar = $('#user-pic-tb').val();
 
     if(name != ""){
-        $('#user-name').text(name);
+        setProfileName(name);
     }
 
+    if(avatar != ""){
+        setProfileAvatar(avatar);
+    }
+
+
     openScreen('home');
+}
+
+
+function setProfileName(name){
+   $('#user-name').text(name);
+}
+
+function setProfileAvatar(avatar){
+    $('.user-avatar').css('background-image','url(img/'+avatar+'.jpeg),url(img/avatardefault.jpeg)')
 }
 
 function openScreen(screen){
@@ -124,7 +139,7 @@ function openScreen(screen){
 }
 
 function updateUserDecksNumber(){
-    var number = $('#categorys').find('.category-container').length;
+    var number = $('#categorys').find('.category-container .card.home').length;
     var desc = '';
 
     (number == 1) ? desc = " DECK" : desc = " DECKS";

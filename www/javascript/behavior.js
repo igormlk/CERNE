@@ -120,7 +120,6 @@ function saveProfile(){
         setProfileAvatar(avatar);
     }
 
-
     openScreen('home');
 }
 
@@ -149,4 +148,28 @@ function updateUserDecksNumber(){
     $('#user-deck-number').text(number + desc);
 
     return number;
+}
+
+
+
+
+
+/*FIREBASE-----------------------------------------------------------------------------------------------------*/
+
+function userPadrao(){
+    var usuario = new Usuario();
+    var preferencias = new Preferencias();
+
+    usuario.nome = 'Thailon Lucas';
+    usuario.titulo = 'Novato';
+    usuario.id = 'thailon';
+    usuario.avatar = 'avatar';
+    usuario.deck = [1,2,3];
+    usuario.senha = '123';
+    preferencias.noturno = false;
+    preferencias.daltonico = false;
+
+    usuario.preferencias = preferencias;
+
+    writeFirebase('/users/'+usuario.id,usuario);
 }

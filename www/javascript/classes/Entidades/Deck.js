@@ -1,14 +1,12 @@
 class Deck
     {
-        constructor(_id, _titulo, _nota, _temaDeck, _privacidade, _descricao, _categoria)
+        constructor(_id, _titulo, _nota, _privacidade, _categoria)
         {
             this.listaCards = [];
             this.id = _id;
             this.titulo = _titulo;
             this.nota = _nota;
-            this.temaDeck = _temaDeck;
             this.privacidade = _privacidade;
-            this.descricao = _descricao;
             this.categoria = _categoria;
             this.data = new Date();
         }

@@ -1,3 +1,5 @@
+readUsuario('thailon');
+
 $(function iniciarFlip($) {
     $(".flip").flip();
 });

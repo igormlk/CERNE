@@ -175,6 +175,32 @@ p{
     color: #757575;
 }
 
+.card-creator > .box{
+    flex-grow: 1;
+    display: flex;
+    overflow: scroll;
+}
+
+.front, .back{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card-creator img{
+    width: 50%;
+}
+
+.card-creator p{
+    text-align: center;
+    font-size: 20px;
+    font-family: Rajd;
+    font-weight: 700;
+}
+
+
 .box{
     border-radius: 7px;
     box-shadow: 3px 3px 20px rgba(0,0,0,0.1);
@@ -432,10 +458,6 @@ select{
 }
 
 
-.flip .front, .flip .back{
-    max-height: 200px;
-}
-
 .hide{
     display: none;
 }
@@ -452,19 +474,4 @@ select{
 .home-message img{
     height: 150px;
     width: 150px
-}
-.front::before, .back::before{
-    position: absolute;
-    top: 0;
-    margin: 4px;
-    color: rgba(0,0,0,0.3);
-    font-size: 12px
-}
-
-.front::before{
-    content: 'frente';
-}
-
- .back::before{
-    content: 'verso';
 }

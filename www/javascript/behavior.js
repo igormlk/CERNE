@@ -29,13 +29,21 @@ function createPreviewCard(front, back) {
 }
 
 function createHomeCard(title, date, cards, category) {
-    $(category).find('.card-container').append('<div class="card home"><div class="header">' + date + '</div><div class="content"><p class="title">' + title + '</p></div><div class="footer"><div class="growth">' + getStars(5) + '</div><div class="length"><p>' + cards + '</p><img src="img/cards.svg" class="icon"></div></div></div>');
+    var cat = '#cat-'+ category;
+    cat = cat.toLowerCase().replace(/ /g,'');
+
+    if (!existCategory(cat)) {
+        createHomeCategory(category,cat);
+    }
+
+    $(cat).find('.card-container').append('<div class="card home"><div class="header">' + date + '</div><div class="content"><p class="title">' + title + '</p></div><div class="footer"><div class="growth">' + getStars(5) + '</div><div class="length"><p>' + cards + '</p><img src="img/cards.svg" class="icon"></div></div></div>');
 
     /**/
 }
 
-function createHomeCategory(title) {
-    $('#categorys').append('<div class="category-container" id="cat-' + title + '"><p class="category-title">' + $('#category-select option:selected').text() + '</p><div class="card-container column"></div></div>');
+
+function createHomeCategory(title, id) {
+    $('#categorys').append('<div class="category-container" id="' + id.replace('#','') + '"><p class="category-title">' + title + '</p><div class="card-container column"></div></div>');
 }
 
 function createHomeMessage(img, message) {
@@ -162,6 +170,12 @@ function setProfileAvatar(avatar) {
     $('.user-avatar').css('background-image', 'url(img/' + avatar + '.jpeg),url(img/avatardefault.jpeg)')
 }
 
+function existCategory(category){
+    if (!$(category).length) {
+        return false;
+    }
+    return true;
+}
 
 /*FIREBASE-----------------------------------------------------------------------------------------------------*/
 
@@ -228,13 +242,8 @@ function readDeck(element) {
     readFirebase('/decks/' + element, function (snapshot) {
 
         var deck = snapshot.val();
-        var category = '#cat-' + snapshot.val().categoria;
 
-        if (!$(category).length) {
-            createHomeCategory(snapshot.val().categoria);
-        }
-
-        createHomeCard(deck.titulo, deck.data, deck.listaCards.length, category);
+        createHomeCard(deck.titulo, deck.data, deck.listaCards.length, deck.categoria);
 
         updateUserDecksNumber();
 

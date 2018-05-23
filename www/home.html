@@ -99,18 +99,49 @@
     <div class="body hide" id="screen-settings">
         <div class="details card">
             <br/>
-                <div>
-                    <label>Nome de usuário:</label>
-                    <input type="text" id="user-name-tb" class="text">
+            <div>
+                <label>Nome de usuário:</label>
+                <input type="text" id="user-name-tb" class="text">
+            </div>
+            <div>
+                <label>Foto de perfil:</label>
+                <input type="text" id="user-pic-tb" class="text">
+            </div>
+            <div>
+                <input type="button" class="button" value="Salvar" onclick="saveProfile()">
+            </div>
+        </div>
+    </div>
+
+    <div class="body hide between" id="screen-card-creator">
+        <div class="box row">
+            <input type="text" id="user-pic-tb" class="text" placeholder="Nome do Deck">
+            <select id="category-select">
+                    <option value="idioma">Idioma</option>
+                    <option value="conhecimento-geral">Conhecimento geral</option>
+                    <option value="matematica">Matemática</option>
+                    <option value="informatica">Informática</option>
+                    <option value="viagem">Viagem</option>
+                </select>
+        </div>
+        <div>
+            <div class="card flip">
+                <div class="front center">
+                    <p class="text front-text">' + front + '</p>
                 </div>
-                <div>
-                    <label>Foto de perfil:</label>
-                    <input type="text" id="user-pic-tb" class="text">
-                </div>
-                <div>
-                    <input type="button" class="button" value="Salvar" onclick="saveProfile()">
+                <div class="back center">
+                    <p class="text back-text">' + back + '</p>
                 </div>
             </div>
+        </div>
+        <div class="box row">
+            <div class="tool"><img src="img/texto.svg"></div>
+            <div class="tool"><img src="img/imagem.svg"></div>
+            <div class="tool"><img src="img/comparacao.svg"></div>
+            <div class="tool"><img src="img/lixeira.svg"></div>
+            <div class="tool"><img src="img/enviar.svg"></div>
+        </div>
+
     </div>
 </body>
 

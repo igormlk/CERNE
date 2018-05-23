@@ -115,6 +115,12 @@ p{
 
 }
 
+.between{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column
+}
+
 .category-container{
     display: flex;
     flex-direction: column;
@@ -170,11 +176,26 @@ p{
 }
 
 .box{
-    margin: 8px;
     border-radius: 7px;
     box-shadow: 3px 3px 20px rgba(0,0,0,0.1);
     background: #fff;
 }
+
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tool{
+    height: 34px;
+    width: 34px;
+    padding: 8px;
+}
+
+.tool > img{
+    height: 100%;
+}
+
 .card.home{
     min-width: 270px;
 }
@@ -199,7 +220,7 @@ p{
     flex-grow: 1;
 }
 
-.details .text{
+input.text{
     padding-top: 8px;
     border: none;
     background-color: transparent;
@@ -359,7 +380,7 @@ p{
 
 .background-image{
     position: absolute;
-    width: 100%;
+    width: 93%;
     height: 150px;
     z-index: -999999;
     background-position: center;
@@ -407,6 +428,7 @@ select{
     border-radius: 0px;
     background-color: #f1f1f1;
     border: 1px solid #fff;
+    margin-left: 16px;
 }
 
 

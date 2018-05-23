@@ -1,4 +1,4 @@
-readUsuario('igor');
+readUsuario('thailon');
 
 $(function iniciarFlip($) {
     $(".flip").flip();

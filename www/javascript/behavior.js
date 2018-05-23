@@ -1,3 +1,5 @@
+readUsuario('igor');
+
 $(function iniciarFlip($) {
     $(".flip").flip();
 });

@@ -115,8 +115,8 @@
     </div>
 
     <div class="body hide between" id="screen-card-creator">
-        <div class="cards-library" id="card-preview-container">
-            <p class="title">Meus Cards</p>
+        <div class="cards-library" id="card-preview-container" >
+            <p class="title" onclick="openCardPreviewContainer()">Meus Cards</p>
             <div class="container-preview"></div>
         </div>
         <div class="box row">
@@ -133,7 +133,7 @@
             <div class="box creator">
                 <p class="size-label">Frente</p>
                 <div class="front">
-                    <img src="img/deckid-cry.png">
+                    <img src="img/imagem.svg">
                     <p type="text">Seu texto aqui</p>
                 </div>
                 <div class="back hide">
@@ -148,6 +148,7 @@
             <div class="tool" id="toolFlip"><img src="img/flip.svg"></div>
             <div class="tool" id="toolVF"><img src="img/comparacao.svg"></div>
             <div class="tool" id="toolLimpar"><img src="img/lixeira.svg"></div>
+            <div class="tool" id="toolLimpar" onclick="openCardPreviewContainer()"><img src="img/cardsdeck.svg"></div>
             <div class="tool" id="toolEnviar"><img src="img/enviar.svg"></div>
         </div>
 

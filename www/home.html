@@ -114,6 +114,10 @@
     </div>
 
     <div class="body hide between" id="screen-card-creator">
+        <div class="cards-library" id="card-preview-container">
+            <p class="title">Meus Cards</p>
+            <div class="container-preview"></div>
+        </div>
         <div class="box row">
             <input type="text" id="user-pic-tb" class="text" placeholder="Nome do Deck">
             <select id="category-select">
@@ -126,19 +130,24 @@
         </div>
         <div class="card-creator">
             <div class="box creator">
+                <p class="size-label">Frente</p>
                 <div class="front">
                     <img src="img/deckid-cry.png">
                     <p type="text">Seu texto aqui</p>
                 </div>
+                <div class="back hide">
+                    <img src="img/deckid-cry.png">
+                    <p type="text">iupa otxet ues</p>
+                </div>
             </div>
         </div>
         <div class="box row">
-            <div class="tool"><img src="img/texto.svg"></div>
-            <div class="tool"><img src="img/imagem.svg"></div>
-            <div class="tool"><img src="img/flip.svg"></div>
-            <div class="tool"><img src="img/comparacao.svg"></div>
-            <div class="tool"><img src="img/lixeira.svg"></div>
-            <div class="tool"><img src="img/enviar.svg"></div>
+            <div class="tool" id="toolTexto"><img src="img/texto.svg"></div>
+            <div class="tool" id="toolImagem"><img src="img/imagem.svg"></div>
+            <div class="tool" id="toolFlip"><img src="img/flip.svg"></div>
+            <div class="tool" id="toolVF"><img src="img/comparacao.svg"></div>
+            <div class="tool" id="toolLimpar"><img src="img/lixeira.svg"></div>
+            <div class="tool" id="toolEnviar"><img src="img/enviar.svg"></div>
         </div>
 
     </div>

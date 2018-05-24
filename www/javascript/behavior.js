@@ -15,19 +15,11 @@ function startHome() {
 }
 
 function createPreviewCard(front, back) {
-    if (front == '' || back == '') {
-        alert('Não é possivel criar um card com campos em branco!');
-        return;
-    }
-
-    $('#container-preview').append('<div class="flip center"><div class="front card center"><p class="text front-text">' + front + '</p></div><div class="back card center"><p class="text back-text">' + back + '</p></div></div>');
+    $('.container-preview').append('<div class="flip center preview-card"><div class="front card center"><img src="img/texto.svg"><p class="text front-text">' + front + '</p></div><div class="back card center"><p class="text back-text">' + back + '</p></div></div>');
 
     $(function teste($) {
         $(".flip").flip();
     });
-
-    $('#frente').val('');
-    $('#verso').val('');
 }
 
 function createHomeCard(title, date, cards, category) {
@@ -69,14 +61,7 @@ function getFormatedDate() {
 }
 
 function cleanCardCreator() {
-    $('#new-card-visualization').find('.title')[0].innerText = "";
-    $('#new-card-visualization').find('.title')[1].innerText = "";
 
-    $('#new-card-name').val('');
-    $('#frente').val('');
-    $('#verso').val('');
-
-    $('#container-preview').empty();
 }
 
 function writeOnCard(card, where, text) {
@@ -147,6 +132,10 @@ function updateUserDecksNumber() {
     $('#user-deck-number').text(number + desc);
 
     return number;
+}
+
+function openCardPreviewContainer(){
+    $('#card-preview-container').toggleClass('open');
 }
 
 /*Sets-----------------------------------------------------------------------------------------------------*/

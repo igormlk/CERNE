@@ -1,34 +1,33 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
     },
-    "installed_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        },
-        "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        },
-        "cordova-sqlite-evcore-extbuild-free": {
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        },
-        "phonegap-plugin-push": {
-            "SENDER_ID": "85075801930",
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "br.com.visualmix.app"
-        }
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
     },
-    "dependent_plugins": {}
+    "cordova-sqlite-evcore-extbuild-free": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "br.com.visualmix.app"
+    }
+  },
+  "dependent_plugins": {}
 }

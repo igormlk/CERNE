@@ -10,7 +10,8 @@ class Card
 
     toJSON()
     {
-
+        let {id, frente, verso} = this;
+        return {id, frente, verso};
     }
 
 }

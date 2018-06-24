@@ -22,6 +22,17 @@ function validarLogin(usuarioLogin, usuarioBanco){
     return valido;
 }
 
+function updateUsuarioObject(usuarioTo, usuarioFrom){
+    usuarioTo.nome = usuarioFrom.nome;
+    usuarioTo.usuario = usuarioFrom.usuario;
+    usuarioTo.titulo = usuarioFrom.titulo;
+    usuarioTo.avatar = usuarioFrom.avatar;
+    usuarioTo.id = usuarioFrom.id;
+    usuarioTo.deck = (usuarioFrom.deck != null) ? usuarioFrom.deck : [];
+    usuarioTo.senha = usuarioFrom.senha;
+    usuarioTo.email = usuarioFrom.email;
+    usuarioTo.preferencias = usuarioFrom.preferencias;
+}
 
 
 function logarUsuario(usuario, password){
@@ -32,7 +43,8 @@ function logarUsuario(usuario, password){
 
         if(validarLogin(usuarioCerne, snapshot.val())){
 
-            updateUsuarioScreen(snapshot.val());
+            updateUsuarioObject(usuarioCerne, snapshot.val());
+            updateUsuarioScreen(usuarioCerne);
 
             openScreen('home');
             $('#user-header').removeClass('close');

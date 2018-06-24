@@ -1,22 +1,22 @@
 class Deck
     {
-        constructor(_id, _titulo, _nota, _privacidade, _categoria, _autor)
+        constructor()
         {
-            this.listaCards = {};
-            this.id = _id;
-            this.titulo = _titulo;
-            this.nota = _nota;
-            this.privacidade = _privacidade;
-            this.categoria = _categoria;
-            this.data = new Date();
-            this.autor = _autor;
+            this.listaCards = [];
+            this.id = "";
+            this.titulo = "";
+            this.nota = "";
+            this.isPrivado = true;
+            this.categoria = "";
+            this.data = new Date().toLocaleDateString();
+            this.autor = "";
+            this.usuario = "";
         }
 
         toJSON()
         {
-            let {listaCards, id, titulo, nota, privacidade,categoria, data,autor} = this;
-            return {listaCards, id, titulo, nota, privacidade,categoria, data,autor};
-
+            let {listaCards, id, titulo, nota, isPrivado,categoria, data,autor, usuario} = this;
+            return {listaCards, id, titulo, nota, isPrivado,categoria, data,autor, usuario};
         }
 
         /*

@@ -1,4 +1,4 @@
-//EVENTO DE INICIALIZAÇÂO DO HARDWARE DO ANDROID
+//EVENTO DE INICIALIZAÇÂO DO HARDWARE DO ANDROID PARA CAMERA
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     console.log(navigator.camera);
@@ -8,7 +8,7 @@ function onDeviceReady() {
 //VARIAVEIS GLOBAIS REFERENTE AO USUARIO
 
 var usuarioCerne = new Usuario();
-var deck = new Deck();
+var tempDeck; // ESSA VARIAVEL É INSTANCIADA NO deck.js toda vez que abrimos a tela de deck
 
 //-------------------------------------
 
@@ -25,29 +25,6 @@ function startHome() {
         createHomeMessage('deckid-cry.png', 'Você ainda não possui decks!');
     }
 }
-
-function createPreviewCard(front, back) {
-    $('.container-preview').append('<div class="flip center preview-card"><div class="front card center"><p class="text front-text">' + front + '</p></div><div class="back card center"><p class="text back-text">' + back + '</p></div></div>');
-
-
-    cleanFrontCardCreator();
-    cleanBackCardCreator();
-
-    $(function teste($) {
-        $(".flip").flip();
-    });
-}
-
-function cleanFrontCardCreator(){
-    $('#front-creator').val("");
-    $('#front-creator-text').text("");
-}
-
-function cleanBackCardCreator(){
-    $('#back-creator').val("");
-    $('#back-creator-text').text("");
-}
-
 
 function createHomeCard(title, date, cards, category) {
     var cat = '#cat-'+ category;
@@ -87,50 +64,7 @@ function getFormatedDate() {
     return currentDate;
 }
 
-function writeOnCard(card, where, text) {
-    $('#' + card).find(where)[0].innerText = text;
-}
 
-function saveNewDeck() {
-    var cardNumber = $('.container-preview').find('.flip').length;
-    var deckName = $('#deck-name').val();
-
-    if (deckName == '') {
-        alert('O deck precisa de um nome!');
-        $('#card-preview-container').removeClass('open');
-        $('#deck-name').focus();
-        return
-    }
-
-    if (!cardNumber)
-        alert('O deck precisa de no mínimo 1 card!');
-
-
-    $('.home-message').remove();
-
-    (cardNumber < 10) ? cardNumber = "0" + cardNumber: cardNumber = cardNumber;
-
-    var selected = $('#category-creator').val();
-    var category = '#cat-' + selected;
-
-    createHomeCard(deckName, getFormatedDate(), cardNumber, selected);
-
-    cleanCardCreator();
-    updateUserDecksNumber();
-
-    openScreen('home');
-
-}
-
-function cleanCardCreator(){
-    cleanFrontCardCreator();
-    cleanBackCardCreator();
-    $('#deck-name').val("");
-    $('.container-preview').empty();
-    $('#card-preview-container').removeClass('open');
-}
-
-NEW_DECK_CATEGORY = 'Adicionados Recentemente';
 
 function saveProfile() {
     var name = $('#user-name-tb').val();
@@ -152,22 +86,9 @@ function openScreen(screen) {
     $('#screen-' + screen).removeClass('hide');
 }
 
-function updateUserDecksNumber() {
-    var number = $('#categorys').find('.category-container .card.home').length;
-    var desc = '';
-
-    (number == 1) ? desc = " DECK": desc = " DECKS";
-    (number < 10 && number > 0) ? number = "0" + number: number = number;
 
 
-    $('#user-deck-number').text(number + desc);
 
-    return number;
-}
-
-function openCardPreviewContainer(){
-    $('#card-preview-container').toggleClass('open');
-}
 
 /*Sets-----------------------------------------------------------------------------------------------------*/
 
@@ -276,16 +197,20 @@ function readDeck(element) {
     });
 }
 
+//TODO ARRUMAR LEITURA DE DECKS
 function updateUsuarioScreen(usuario){
 
-    usuarioCerne = usuario;
-
+    //Atualiza o objeto
     setProfileName(usuario.nome);
     setProfileTitle(usuario.titulo);
-    //setProfileDeckNumber(snapshot.val().deck.length);
+    setProfileDeckNumber((usuario.deck != null) ? usuario.deck.length : 0);
     setProfileAvatar(usuario.avatar);
 
-    //readDeck(usuarioCerne.deck[i]); TODO leitura dos decks ao logar
+    if(usuario.deck == null)
+        return;
+
+    for(var i = 0; i < usuario.deck.length; i++)
+        readDeck(usuario.deck[i]); //TODO leitura dos decks ao logar
 
 }
 

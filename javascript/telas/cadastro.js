@@ -5,7 +5,8 @@ function preencherUsuario(){
     usuarioCerne.usuario = $("#loginUsuarioCadastro").val();
     usuarioCerne.senha = $("#senhaUsuarioCadastro").val();
     usuarioCerne.email = $("#emailUsuarioCadastro").val();
-    usuarioCerne.deck = {};
+    usuarioCerne.titulo = "Noob Deck";
+    usuarioCerne.deck = [];
 }
 
 function validarCadastro(){
@@ -32,7 +33,7 @@ function cadastrarUsuario(){
 
     writeFirebase("/users/" + usuarioCerne.usuario, usuarioCerne);
 
-   toastShowMessageLongBottom("Usuario cadastrado com sucesso");
+    toastShowMessageLongBottom("Usuario cadastrado com sucesso");
 
 }
 

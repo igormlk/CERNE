@@ -23,12 +23,16 @@ function validarEdicaoSettings(){
     return valido;
 }
 
+function salvarEdicaoUsuario(usuario){
+    updateFirebase("/users/" + usuario.usuario, usuario);
+}
+
 function salvarSettings(){
     preencherUsuarioSettings();
     if(!validarEdicaoSettings())
         return;
 
-    updateFirebase("/users/" + usuarioCerne.usuario, usuarioCerne);
+    salvarEdicaoUsuario(usuarioCerne);
 
     updateUsuarioScreen(usuarioCerne);
 

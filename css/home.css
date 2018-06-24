@@ -114,16 +114,24 @@ p{
 }
 
 .avatar{
-    height: 56px;
-    width: 56px;
+    min-height: 62px;
+    min-width: 62px;
     border-radius: 100%;
     border: 2px solid #fff;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
     background-position: center;
     background-size: cover;
     margin: 8px;
+    position: relative;
 }
 
+.avatar .camera {
+    position: absolute;
+    right: -13;
+    bottom: -13;
+    height: 20;
+    width:  20
+}
 .body{
     flex-grow: 1;
     max-height: 100%;

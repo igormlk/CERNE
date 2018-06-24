@@ -1,16 +1,17 @@
 function validarLogin(usuarioLogin, usuarioBanco){
 
-    var msg = "Usuário não cadastrado";
+    var msg = "";
     var valido = true;
 
     if(usuarioBanco == null){
+        msg += "Usuário não cadastrado";
         toastShowMessageLongCenter(msg);
         valido = false;
         return valido;
     }
 
     if(usuarioLogin.senha != usuarioBanco.senha || usuarioLogin.usuario != usuarioBanco.usuario){
-        msg+="Usuário ou senha incorretos";
+        msg ="Usuário ou senha incorretos";
         valido = false;
     }
 

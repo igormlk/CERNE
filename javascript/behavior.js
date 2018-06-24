@@ -1,3 +1,16 @@
+//EVENTO DE INICIALIZAÇÂO DO HARDWARE DO ANDROID
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(navigator.camera);
+}
+//-----------------------------------------------------
+
+//VARIAVEIS GLOBAIS REFERENTE AO USUARIO
+
+var usuarioCerne = new Usuario();
+
+//-------------------------------------
+
 $(function iniciarFlip($) {
     $(".flip").flip();
 });

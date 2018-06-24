@@ -4,10 +4,11 @@ class Usuario
     constructor()
     {
         this.nome = "";
+        this.usuario = "";
         this.titulo = "";
-        this.avatar = 0;
+        this.avatar = "";
         this.id = 0;
-        this.deck = [];
+        this.deck = "";
         this.senha = '';
         this.preferencias = new Preferencias();
     }
@@ -15,8 +16,8 @@ class Usuario
 
     toJSON()
     {
-        let {nome, titulo, avatar, id, senha,deck, preferencias} = this;
-        return {nome,titulo,avatar,id, senha,deck,preferencias};
+        let {nome, usuario, titulo, avatar, id, senha,deck, preferencias} = this;
+        return {nome, usuario,titulo,avatar,id, senha,deck,preferencias};
     }
 
 

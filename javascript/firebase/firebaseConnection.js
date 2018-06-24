@@ -13,8 +13,6 @@ console.log("Firebase iniciado");
 var storage = firebase.storage();
 var database = firebase.database();
 
-
-
 /*
   Remover um dado no banco
   path = caminho no qual vc quer remover o dado no banco
@@ -81,5 +79,14 @@ function removeReadCallBackFirebase(evento,pathToObserve, functionCallBack)
     var ref = database.ref(pathToObserve);
     ref.off(evento,functionCallBack);
 }
+
+/*
+    Função de gerar chave unica no firebase,
+    retorna uma string como chave
+*/
+function generateUniqueKeyFirebase(){
+    return database.ref("/").push().key;
+}
+
 
 

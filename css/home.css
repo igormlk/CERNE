@@ -311,6 +311,7 @@ p{
     text-align: center;
     display: flex;
     justify-content: center;
+    align-content: center;
 }
 
 .card.center .content{
@@ -690,8 +691,20 @@ select{
 
 
 #screen-study .question{
-    flex-grow: 1;
     display: flex;
+    position: relative;
+}
+
+.study-card{
+    height: 250px;
+    width: 100%;
+}
+
+.study-card div{
+    margin-top: 16px;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0px 15px 20px rgba(0,0,0,0.3);
 }
 
 .box{

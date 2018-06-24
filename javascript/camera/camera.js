@@ -17,9 +17,13 @@ function cameraTakePicture(cameraSuccess, cameraError){
     navigator.camera.getPicture(cameraSuccess, cameraError, camOptions);
 }
 
-function capturouImagem(imageData){
-    var img = $("#"+idImagemTela);
+function setImagemScreen(id, imageData){
+    var img = $(id);
     img.css("background-image",  "url(data:image/jpeg;base64,"+imageData+")");
+}
+
+function capturouImagem(imageData){
+    setImagemScreen(idImagemTela, imageData);
 }
 
 function erroCapturarImagem(messageError){
@@ -27,7 +31,7 @@ function erroCapturarImagem(messageError){
 }
 
 function getImagemFromScreen(id){
-    var img = $("#"+id);
+    var img = $(id);
     var str = img.css("background-image");
     str = str.replace("url(\"data:image/jpeg;base64,", "");
     str = str.replace("\")", "");

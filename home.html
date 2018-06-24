@@ -31,7 +31,7 @@
             <p  onclick="openScreen('home')">CERNE</p>
             <div class="options">
                 <img src="img/files.svg" class="icon nexus" onclick="openScreen('card-creator')">
-                <img src="img/settings.svg" class="icon" onclick="openScreen('settings')">
+                <img src="img/settings.svg" class="icon" onclick="openSettings()">
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                 <form id="formUsuarioLogin">
                     <input type="text" placeholder="Usuário" class="text" id="login-user">
                     <input type="password" placeholder="Senha" class="text" id="login-password">
-                    <input type="button" value="Entrar" class="button" onclick="readUsuario($('#login-user').val())">
+                    <input type="button" value="Entrar" class="button" onclick="logarUsuario($('#login-user').val(), $('#login-password').val())">
                 </form>
             </div>
         </div>
@@ -68,19 +68,19 @@
     <div class="body hide" id="screen-settings">
         <div class="login">
             <div class="avatar user-avatar" style="background-image: url(img/avatardefault.jpeg)"
-                 id="imagemPerfilSettings" onclick="capturarFoto('imagemPerfilSettings')">
+                 id="imagemPerfilSettings" onclick="capturarFoto('#imagemPerfilSettings')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 48 48" class="camera"><path d="M6 8V2h4v6h6v4h-6v6H6v-6H0V8h6zm6 12v-6h6V8h14l3.66 4H42c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H10c-2.2 0-4-1.8-4-4V20h6zm14 18c5.52 0 10-4.48 10-10s-4.48-10-10-10-10 4.48-10 10 4.48 10 10 10zm-6.4-10c0 3.54 2.86 6.4 6.4 6.4s6.4-2.86 6.4-6.4-2.86-6.4-6.4-6.4-6.4 2.86-6.4 6.4z"/></svg>
             </div>
 
             <div class="box">
-                <form id="formUsuarioSettings">
-                    <input type="text" placeholder="Nome" class="text">
-                    <input type="text" placeholder="Usuário" class="text">
-                    <input type="password" placeholder="Nova senha" class="text">
-                    <input type="password" placeholder="Confirmar nova senha" class="text">
-                    <input type="email" placeholder="E-mail" class="text">
+                <form>
+                    <input id="nomeSettings" type="text" placeholder="Nome" class="text">
+                    <input id="usuarioSettings" type="text" placeholder="Usuário" class="text" disabled>
+                    <input id="senhaSettings" type="password" placeholder="Nova senha" class="text">
+                    <input id="confirmarSenhaSettings" type="password" placeholder="Confirmar nova senha" class="text">
+                    <input id="emailSettings" type="email" placeholder="E-mail" class="text">
 
-                    <input type="button" value="Salvar alterações" class="button" onclick="readUsuario($('#login-user').val())">
+                    <input type="button" value="Salvar alterações" class="button" onclick="salvarSettings()">
                 </form>
             </div>
         </div>
@@ -88,12 +88,12 @@
 
     <div class="body hide" id="screen-cadastro">
         <div class="login">
-            <div class="avatar user-avatar" style="background-image: url(img/avatardefault.jpeg)" onclick="capturarFoto('imagemPerfilCadastro')" id="imagemPerfilCadastro">
+            <div class="avatar user-avatar" style="background-image: url(img/avatardefault.jpeg)" onclick="capturarFoto('#imagemPerfilCadastro')" id="imagemPerfilCadastro">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 48 48" class="camera"><path d="M6 8V2h4v6h6v4h-6v6H6v-6H0V8h6zm6 12v-6h6V8h14l3.66 4H42c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H10c-2.2 0-4-1.8-4-4V20h6zm14 18c5.52 0 10-4.48 10-10s-4.48-10-10-10-10 4.48-10 10 4.48 10 10 10zm-6.4-10c0 3.54 2.86 6.4 6.4 6.4s6.4-2.86 6.4-6.4-2.86-6.4-6.4-6.4-6.4 2.86-6.4 6.4z"/></svg>
             </div>
 
             <div class="box">
-                <form id="formCadastroUsuario">
+                <form>
                     <input id="nomeUsuarioCadastro" type="text" placeholder="Nome" class="text">
                     <input id="loginUsuarioCadastro" type="text" placeholder="Usuário" class="text">
                     <input id="senhaUsuarioCadastro" type="password" placeholder="Senha" class="text">

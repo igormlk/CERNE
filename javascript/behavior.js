@@ -8,6 +8,7 @@ function onDeviceReady() {
 //VARIAVEIS GLOBAIS REFERENTE AO USUARIO
 
 var usuarioCerne = new Usuario();
+var deck = new Deck();
 
 //-------------------------------------
 
@@ -188,7 +189,8 @@ function setProfileDeckNumber(number) {
 }
 
 function setProfileAvatar(avatar) {
-    $('.user-avatar').css('background-image', 'url(img/' + avatar + '.jpeg),url(img/avatardefault.jpeg)')
+    setImagemScreen('.user-avatar', avatar);
+    //$('.user-avatar').css('background-image', 'url(img/' + avatar + '.jpeg),url(img/avatardefault.jpeg)')
 }
 
 function existCategory(category){
@@ -273,3 +275,17 @@ function readDeck(element) {
 
     });
 }
+
+function updateUsuarioScreen(usuario){
+
+    usuarioCerne = usuario;
+
+    setProfileName(usuario.nome);
+    setProfileTitle(usuario.titulo);
+    //setProfileDeckNumber(snapshot.val().deck.length);
+    setProfileAvatar(usuario.avatar);
+
+    //readDeck(usuarioCerne.deck[i]); TODO leitura dos decks ao logar
+
+}
+

@@ -8,16 +8,16 @@ class Usuario
         this.titulo = "";
         this.avatar = "";
         this.id = 0;
-        this.deck = "";
+        this.deck = {};
         this.senha = '';
+        this.email = "";
         this.preferencias = new Preferencias();
     }
 
-
     toJSON()
     {
-        let {nome, usuario, titulo, avatar, id, senha,deck, preferencias} = this;
-        return {nome, usuario,titulo,avatar,id, senha,deck,preferencias};
+        let {nome, usuario, titulo, avatar, id, senha,deck, preferencias, email} = this;
+        return {nome, usuario,titulo,avatar,id, senha,deck,preferencias, email};
     }
 
 

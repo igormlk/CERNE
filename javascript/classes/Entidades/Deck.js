@@ -2,7 +2,7 @@ class Deck
     {
         constructor(_id, _titulo, _nota, _privacidade, _categoria, _autor)
         {
-            this.listaCards = [];
+            this.listaCards = {};
             this.id = _id;
             this.titulo = _titulo;
             this.nota = _nota;

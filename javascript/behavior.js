@@ -9,10 +9,12 @@ function onDeviceReady() {
 
 var usuarioCerne = new Usuario();
 var tempDeck; // ESSA VARIAVEL É INSTANCIADA NO deck.js toda vez que abrimos a tela de deck
+tempDeck = new Deck();
 
 //-------------------------------------
 
-$(function iniciarFlip($) {
+$(
+    function iniciarFlip($) {
     $(".flip").flip();
 });
 
@@ -26,7 +28,7 @@ function startHome() {
     }
 }
 
-function createHomeCard(title, date, cards, category) {
+function createHomeCard(id,title, date, cards, category) {
     var cat = '#cat-'+ category;
     cat = cat.toLowerCase().replace(/ /g,'');
 
@@ -34,9 +36,21 @@ function createHomeCard(title, date, cards, category) {
         createHomeCategory(category,cat);
     }
 
-    $(cat).find('.card-container').append('<div class="card home"><div class="header">' + date + '</div><div class="content"><p class="title">' + title + '</p></div><div class="footer"><div class="growth">' + getStars(5) + '</div><div class="length"><p>' + cards + '</p><img src="img/cards.svg" class="icon"></div></div></div>');
+    $(cat).find('.card-container').append('<div class="card home" id="'+id+'" onClick=openDeck("'+id+'")><div class="header">' + date + '</div><div class="content"><p class="title">' + title + '</p></div><div class="footer"><div class="growth">' + getStars(5) + '</div><div class="length"><p>' + cards + '</p><img src="img/cards.svg" class="icon"></div></div></div>');
 
     /**/
+}
+
+function openDeck(id){
+    readDeckFirebase(id, tempDeck,function(deck){
+        $('#cardContainer-deck').empty();
+        deck.listaCards.map(function(card){
+            var preview = createPreviewCard(card.frente,card.verso,card.id);
+            addPreviewCard(preview,'#cardContainer-deck');
+        });
+        $('#label-deckName').text(deck.titulo);
+        openScreen('deck');
+    });
 }
 
 
@@ -190,7 +204,7 @@ function readDeck(element) {
 
         var deck = snapshot.val();
 
-        createHomeCard(deck.titulo, deck.data, deck.listaCards.length, deck.categoria);
+        createHomeCard(deck.id,deck.titulo, deck.data, deck.listaCards.length, deck.categoria);
 
         updateUserDecksNumber();
 

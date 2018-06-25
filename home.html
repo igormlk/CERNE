@@ -11,6 +11,7 @@
     <script src="javascript/classes/Entidades/Usuario.js" type="text/javascript"></script>
     <script src="javascript/classes/Entidades/Deck.js" type="text/javascript"></script>
     <script src="javascript/classes/Entidades/Card.js" type="text/javascript"></script>
+    <script src="javascript/classes/Entidades/Question.js" type="text/javascript"></script>
     <script src="javascript/classes/Entidades/Preferencias.js" type="text/javascript"></script>
     <script src="javascript/telas/card.js" type="text/javascript"></script>
     <script src="javascript/telas/deck.js" type="text/javascript"></script>
@@ -107,7 +108,7 @@
     </div>
 
     <div class="body hide between" id="screen-card-creator">
-        <div class="cards-library" id="card-preview-container">
+        <div class="cards-library">
             <span class="save-deck" id="save-deck" onclick="saveNewDeck()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" fill="#FFF"><path d="M18 32.34L9.66 24l-2.83 2.83L18 38l24-24-2.83-2.83z"/></svg>
             </span>
@@ -115,14 +116,14 @@
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48"><path d="M30.83 32.67l-9.17-9.17 9.17-9.17L28 11.5l-12 12 12 12z"/></svg></span>
                 <p>Meus Cards</p>
             </div>
-            <div class="container-preview"></div>
+            <div class="container-preview" id="cardContainer-creator"></div>
         </div>
 
         <div class="deck-name">
             <input type="text" id="deck-name" placeholder="Digite o nome do deck aqui">
         </div>
 
-        <div class="card-creator">
+        <div class="card-creator ">
             <div class="frente nexus" onclick="$('#front-creator').focus()">
                 <span class="clean nexus" onclick="cleanFrontCardCreator()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" fill="#bdbdbd"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"/></svg></span>
                 <p type="text" placeholder="Frente" class="text-card-creator" id="front-creator-text"></p>
@@ -150,28 +151,31 @@
                 </select>
             </span>
 
-            <span><div class="add-card nexus" onClick="createPreviewCard($('#front-creator').val(),$('#back-creator').val())"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFF" viewBox="0 0 48 48"><path d="M38 26H26v12h-4V26H10v-4h12V10h4v12h12v4z"/></svg></div></span>
+            <span><div class="add-card nexus" onClick="createNewCard($('#front-creator').val(),$('#back-creator').val())"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFF" viewBox="0 0 48 48"><path d="M38 26H26v12h-4V26H10v-4h12V10h4v12h12v4z"/></svg></div></span>
 
             <span class="right" onClick="openCardPreviewContainer()"> <div class="card-animator"></div><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" fill="#757575"><path d="M8 22h10V10H8v12zm0 14h10V24H8v12zm12 0h10V24H20v12zm12 0h10V24H32v12zM20 22h10V10H20v12zm12-12v12h10V10H32z"/></svg></span>
         </div>
     </div>
 
-    <div class="body between" id="screen-study">
-        <div class="question">
-            <div class="flip study-card">
-                <div class="front">
-                    <p>Frente</p>
-                </div>
-                <div class="back">
-                    <p>Verso</p>
-                </div>
-            </div>
+    <div class="body between hide" id="screen-study">
+        <div class="question center card">
+            <p id="question" class="title"></p>
         </div>
         <div class="answers">
-            <input type="button" class="button answer" value="" id="option-1">
-            <input type="button" class="button answer" value="" id="option-2">
-            <input type="button" class="button answer" value="" id="option-3">
-            <input type="button" class="button answer" value="" id="option4">
+            <input type="button" class="button answer" value="" id="a-1" onclick="setQuestion(TEST[curentQuestion])">
+            <input type="button" class="button answer" value="" id="a-2" onclick="setQuestion(TEST[curentQuestion])">
+            <input type="button" class="button answer" value="" id="a-3" onclick="setQuestion(TEST[curentQuestion])">
+            <input type="button" class="button answer" value="" id="a-4" onclick="setQuestion(TEST[curentQuestion])">
+        </div>
+    </div>
+
+    <div class="body between hide" id="screen-deck">
+        <div>
+            <p class="title-screen" id="label-deckName">oi</p>
+            <div class="container-preview" id="cardContainer-deck"></div>
+        </div>
+        <div class="footer-body">
+            <input type="button" value="Estudar" class="button nexus" onclick="initStudy()">
         </div>
     </div>
 

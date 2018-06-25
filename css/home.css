@@ -45,6 +45,35 @@ body > div{
     transition: 0.5s;
 }
 
+.footer-body{
+    display: flex;
+    justify-content: space-around;
+    height: 45px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-body > .button{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.footer-body .footer-option{
+    border: none;
+    height: 100%;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.footer-body .footer-option:active{
+    background-color: #ffc106;
+}
+
 .login{
     display: flex;
     flex-direction: column;
@@ -136,7 +165,7 @@ p{
     flex-grow: 1;
     max-height: 100%;
     overflow: scroll;
-
+    position: relative;
 }
 
 .between{
@@ -258,13 +287,27 @@ p{
     font-weight: 700;
 }
 
-.cards-library .container-preview{
+.container-preview{
     overflow-y: scroll;
     padding: 16px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-bottom: 36px;
+}
+
+#cardContainer-deck{
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#cardContainer-deck .preview-card{
+    height: 150px;
+    min-width: 90px;
+    max-width: 100px;
+    margin: 4px;
+    flex: 1;
+    font-size: 12px;
 }
 
 .preview-card{
@@ -332,7 +375,7 @@ input.text{
     padding-top: 8px;
     border: none;
     background-color: transparent;
-    border-bottom: 3px solid #ffc106;
+    border-bottom: 3px solid #FFC106;
     width: 100%;
     font-size: 15px;
     margin: 8px 0px;
@@ -478,8 +521,16 @@ input.text{
 }
 
 
-.add-card:hover, .save-deck:hover{
+.add-card:active, .save-deck:active{
     background-color: #00C853;
+}
+
+p.title-screen{
+   text-align: center;
+    margin: 0;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 .box{
@@ -590,6 +641,19 @@ input.text{
     margin: 16px 0px;
 }
 
+.button:active{
+    background-color: #FFA000;
+}
+
+.button.correct:active{
+    background-color: #00C853;
+}
+
+.button.wrong:active{
+    background-color: #F44336;
+}
+
+
 /*  CARD COLORS    */
 
 .purple{
@@ -689,22 +753,10 @@ select{
     width: 150px
 }
 
-
-#screen-study .question{
+.question{
     display: flex;
     position: relative;
-}
-
-.study-card{
-    height: 250px;
-    width: 100%;
-}
-
-.study-card div{
-    margin-top: 16px;
-    background-color: #fff;
-    border-radius: 7px;
-    box-shadow: 0px 15px 20px rgba(0,0,0,0.3);
+    flex: 1;
 }
 
 .box{

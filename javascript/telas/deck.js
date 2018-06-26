@@ -101,10 +101,12 @@ var scoreText = ["Com um pouco mais de treinamento alcançaremos o sucesso, não
                 "Você está no caminho certo. Está aprendendo cada dia mais!",
                 "Que desempenho ótimo, você realmente aprendeu!",
                 "SURPREENDENTE, conteúdo revisado e aprendido!"]
+
 function initStudy(){
     curentQuestion = 0;
     GRADE = 0;
     buildTest(tempDeck);
+    $("#score-stars").empty();
     setQuestion(TEST[curentQuestion]);
     openScreen('study');
 }

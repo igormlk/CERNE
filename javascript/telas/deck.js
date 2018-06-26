@@ -15,7 +15,7 @@ function readDeckFirebase(idDeck, tempDeck, callback){
         var dbDeck = snapShot.val();
         tempDeck.id = dbDeck.id;
         tempDeck.titulo = dbDeck.titulo;
-        tempDeck.categoria = dbDeck.titulo;
+        tempDeck.categoria = dbDeck.categoria;
         tempDeck.nota = dbDeck.nota;
         tempDeck.autor = dbDeck.autor;
         tempDeck.usuario = dbDeck.usuario;
@@ -61,7 +61,7 @@ function saveNewDeck() {
     tempDeck.id = generateUniqueKeyFirebase();
     tempDeck.titulo = deckName;
     tempDeck.categoria = selected;
-    tempDeck.nota = "0";
+    tempDeck.nota = "5";
     tempDeck.autor = usuarioCerne.nome;
     tempDeck.usuario = usuarioCerne.usuario;
     tempDeck.isPrivado = false;
@@ -71,7 +71,7 @@ function saveNewDeck() {
     salvarDeck(tempDeck);
     salvarEdicaoUsuario(usuarioCerne);
 
-    createHomeCard(tempDeck.id,deckName, getFormatedDate(), cardNumber, selected);
+    createHomeCard(tempDeck.id,deckName, getFormatedDate(), cardNumber, selected,tempDeck.nota);
     cleanCardCreator();
     updateUserDecksNumber();
     openScreen('home');
@@ -94,33 +94,60 @@ function updateUserDecksNumber() {
 
 var TEST = [];
 var curentQuestion = 0;
-
-
+var GRADE = 0;
+var scoreText = ["Com um pouco mais de treinamento alcançaremos o sucesso, não desista!",
+                "Evolução é sempre bem vinda, continue tentando!",
+                "Vejo um avanço e um grande potencial, FOCO!",
+                "Você está no caminho certo. Está aprendendo cada dia mais!",
+                "Que desempenho ótimo, você realmente aprendeu!",
+                "SURPREENDENTE, conteúdo revisado e aprendido!"]
 function initStudy(){
     curentQuestion = 0;
+    GRADE = 0;
     buildTest(tempDeck);
     setQuestion(TEST[curentQuestion]);
     openScreen('study');
 }
 
+
+var ANSWERS = ["#a-1","#a-2","#a-3","#a-4"];
+
+function getScore(grade){
+    return Math.ceil((grade*5) / 10);
+}
+
 function setQuestion(question){
+    if(curentQuestion == TEST.length){
+        tempDeck.nota = getScore(GRADE);
+        var id = "#" + tempDeck.id;
+        $(id).find('.growth').empty();
+        $(id).find('.growth').append(getStars(tempDeck.nota));
+        updateDeck(tempDeck);
+        $("#score-stars").append(getStars(tempDeck.nota));
+        $("#score-title").text("Sua pontuação foi " + GRADE + " de " + TEST.length);
+        $("#score-subtitle").text(scoreText[tempDeck.nota]);
+        openScreen('score');
+        return
+    }
+
     $('.answer').addClass('wrong');
+    $('.answer').removeClass('correct');
 
     $('#question').text(question.pergunta);
 
-    $('#a-1').val(question.resposta);
-    $('#a-1').removeClass('wrong');
-    $('#a-1').addClass('correct');
+    ANSWERS.shuffle();
+    question.erradas.shuffle();
+
+    $(ANSWERS[0]).val(question.resposta);
+    $(ANSWERS[0]).removeClass('wrong');
+    $(ANSWERS[0]).addClass('correct');
 
 
-    $('#a-2').val(question.erradas[0]);
-    $('#a-3').val(question.erradas[1]);
-    $('#a-4').val(question.erradas[2]);
+    $(ANSWERS[1]).val(question.erradas[0]);
+    $(ANSWERS[2]).val(question.erradas[1]);
+    $(ANSWERS[3]).val(question.erradas[2]);
 
     curentQuestion++;
-
-    if(curentQuestion >= TEST.length)
-        alert('ACABOU');
 }
 
 
@@ -187,6 +214,9 @@ function getWrongAnswers(deck, right, side){
     return wrongs;
 }
 
-function rightAnswer(userAnswer){
-    return (userAnswer === RIGHT_ANSWER);
+function checkAnswer(pressed){
+    if($(pressed).hasClass('correct'))
+        GRADE++;
+
+    setQuestion(TEST[curentQuestion]);
 }

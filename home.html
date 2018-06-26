@@ -162,16 +162,25 @@
             <p id="question" class="title"></p>
         </div>
         <div class="answers">
-            <input type="button" class="button answer" value="" id="a-1" onclick="setQuestion(TEST[curentQuestion])">
-            <input type="button" class="button answer" value="" id="a-2" onclick="setQuestion(TEST[curentQuestion])">
-            <input type="button" class="button answer" value="" id="a-3" onclick="setQuestion(TEST[curentQuestion])">
-            <input type="button" class="button answer" value="" id="a-4" onclick="setQuestion(TEST[curentQuestion])">
+            <input type="button" class="button answer" value="" id="a-1" onclick="checkAnswer(this)">
+            <input type="button" class="button answer" value="" id="a-2" onclick="checkAnswer(this)">
+            <input type="button" class="button answer" value="" id="a-3" onclick="checkAnswer(this)">
+            <input type="button" class="button answer" value="" id="a-4" onclick="checkAnswer(this)">
+        </div>
+    </div>
+
+    <div class="body between hide" id="screen-score">
+        <div class="score-card">
+            <div class="trophy"></div>
+            <p class="title" id="score-title">Sua pontuação foi 10 de 10</p>
+            <p class="subtitle" id="score-subtitle">Seu desempenho está ótimo, continue assim!</p>
+            <div id="score-stars" class="growth"></div>
         </div>
     </div>
 
     <div class="body between hide" id="screen-deck">
         <div>
-            <p class="title-screen" id="label-deckName">oi</p>
+            <p class="title-screen" id="label-deckName"></p>
             <div class="container-preview" id="cardContainer-deck"></div>
         </div>
         <div class="footer-body">

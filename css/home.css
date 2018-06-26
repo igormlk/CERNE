@@ -350,10 +350,11 @@ p{
     min-width: 270px;
 }
 
+
 .card.center{
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
 }
 
@@ -759,6 +760,13 @@ select{
     flex: 1;
 }
 
+.question::Before{
+    content: "";
+    position: absolute;
+    top: 8;
+    right: 8;
+}
+
 .box{
     flex-grow: 1;
 }
@@ -836,4 +844,42 @@ button.nexus{
 }
 
 
+.score-card{
+    align-self: center;
+    position: relative;
+    min-height: 200px;
+    margin-top: 50px;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0px 7px 20px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
 
+.score-card .title{
+    font-weight: 600;
+    margin: 16px;
+    margin-top: 60px
+}
+
+.score-card .growth{
+    height: 45px;
+}
+
+.trophy{
+    height: 100px!important;
+    width: 100px!important;
+    border-radius: 100%;
+    border: solid 3px #fff;
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.3);
+    top: -50;
+    align-self: center;
+    position: absolute;
+    background-color: #fff;
+    background-image: url("../img/avatardefault.jpeg");
+    background-position: center;
+    background-size: contain;
+}

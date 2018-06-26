@@ -28,7 +28,7 @@ function startHome() {
     }
 }
 
-function createHomeCard(id,title, date, cards, category) {
+function createHomeCard(id,title, date, cards, category, score) {
     var cat = '#cat-'+ category;
     cat = cat.toLowerCase().replace(/ /g,'');
 
@@ -36,7 +36,7 @@ function createHomeCard(id,title, date, cards, category) {
         createHomeCategory(category,cat);
     }
 
-    $(cat).find('.card-container').append('<div class="card home" id="'+id+'" onClick=openDeck("'+id+'")><div class="header">' + date + '</div><div class="content"><p class="title">' + title + '</p></div><div class="footer"><div class="growth">' + getStars(5) + '</div><div class="length"><p>' + cards + '</p><img src="img/cards.svg" class="icon"></div></div></div>');
+    $(cat).find('.card-container').append('<div class="card home" id="'+id+'" onClick=openDeck("'+id+'")><div class="header">' + date + '</div><div class="content"><p class="title">' + title + '</p></div><div class="footer"><div class="growth">' + getStars(score) + '</div><div class="length"><p>' + cards + '</p><img src="img/cards.svg" class="icon"></div></div></div>');
 
     /**/
 }
@@ -204,7 +204,7 @@ function readDeck(element) {
 
         var deck = snapshot.val();
 
-        createHomeCard(deck.id,deck.titulo, deck.data, deck.listaCards.length, deck.categoria);
+        createHomeCard(deck.id,deck.titulo, deck.data, deck.listaCards.length, deck.categoria, deck.nota);
 
         updateUserDecksNumber();
 
@@ -226,5 +226,16 @@ function updateUsuarioScreen(usuario){
     for(var i = 0; i < usuario.deck.length; i++)
         readDeck(usuario.deck[i]); //TODO leitura dos decks ao logar
 
+}
+
+
+
+Array.prototype.shuffle = function() {
+  let m = this.length, i;
+  while (m) {
+    i = (Math.random() * m--) >>> 0;
+    [this[m], this[i]] = [this[i], this[m]]
+  }
+  return this;
 }
 
